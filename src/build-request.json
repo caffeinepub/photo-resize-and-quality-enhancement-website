@@ -1,0 +1,125 @@
+{
+  "kind": "build_request",
+  "title": "Photo resize and quality enhancement website",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a single-page web app that lets users upload an image (JPG/PNG/WebP) via file picker and drag-and-drop, then shows a preview and basic image information (filename, dimensions, file size).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Create a website for resize image and quality photos"
+        ]
+      },
+      "acceptanceCriteria": [
+        "User can upload by clicking to choose a file or by drag-and-drop.",
+        "After upload, the app shows an image preview and displays current width×height and approximate file size.",
+        "Unsupported file types are rejected with a clear error message."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement image resizing controls that allow the user to set target width/height, maintain aspect ratio toggle, and choose a resize mode (fit/contain vs fill/cover), then apply the resize and update the preview.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Create a website for resize image and quality photos"
+        ]
+      },
+      "acceptanceCriteria": [
+        "User can set width and height values; when aspect ratio lock is enabled, changing one updates the other.",
+        "Resize mode selection changes how the output is computed (contain vs cover).",
+        "Clicking an Apply/Resize action regenerates the preview at the new dimensions."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Provide “photo quality” enhancement controls implemented client-side (no external AI services), including at minimum: sharpen, brightness, contrast, saturation, and a “reduce noise”/smoothing control; applying enhancements must update the preview and be reversible (reset to original).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Create a website for resize image and quality photos"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Enhancement sliders exist for sharpen, brightness, contrast, saturation, and smoothing/noise reduction.",
+        "User can apply adjustments and see the preview update accordingly.",
+        "A Reset button restores the original uploaded image (before resize/enhancement)."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Allow users to export/download the processed image with format options (PNG and JPEG at minimum) and, for JPEG/WebP outputs, a quality slider (e.g., 1–100).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Create a website for resize image and quality photos"
+        ]
+      },
+      "acceptanceCriteria": [
+        "User can choose output format (PNG/JPEG).",
+        "When JPEG is selected, a quality control is shown and affects the downloaded file size/quality.",
+        "Clicking Download saves the processed image locally with a sensible filename (e.g., originalname-processed.jpg)."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add a clear, consistent visual theme across the app (colors, typography, spacing, and component styling) suitable for a photo tool; avoid blue/purple as the primary palette.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "UI uses a coherent theme (background, surfaces, typography, buttons, inputs) consistently across the page.",
+        "Primary palette is not blue/purple-dominant.",
+        "Layout looks intentional on both mobile and desktop."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Use generated static brand assets in the UI (logo and a subtle background texture) by placing them in frontend/public/assets/generated and referencing them directly from the frontend.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Generated images exist under frontend/public/assets/generated and are rendered in the UI (e.g., logo in header, texture in background).",
+        "The app loads and displays these assets without involving the backend."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not use external AI/LLM services for photo enhancement; all processing must be done locally in the browser.",
+    "Do not edit any files under frontend/src/components/ui or the immutable hook entrypoints listed in SYSTEM_CONTEXT."
+  ],
+  "nonGoals": [
+    "User accounts or authentication.",
+    "Server-side image processing.",
+    "Persistent storage of user images on the backend.",
+    "Real-time collaboration or sharing features."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Minimal flat logo combining a photo/camera motif with resize arrows, dark/neutral palette (logo-photo-resizer.dim_512x512.png)",
+      "Subtle repeating background texture with light grain and geometric shapes, neutral warm gray tones (bg-texture.dim_1600x900.png)"
+    ],
+    "edits": []
+  }
+}

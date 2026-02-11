@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Website to resize images and enhance photo quality.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Minimal flat logo combining a photo/camera motif with resize arrows, dark/neutral palette (logo-photo-resizer.dim_512x512.png)\n- Subtle repeating background texture with light grain and geometric shapes, neutral warm gray tones (bg-texture.dim_1600x900.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-single-page-web-app-that-lets-users-upload-an-image-jpg-png-webp-via-file-picker-and-drag-and-drop-then-shows-a-preview-and-basic-image-information-filename-dimensions-file-size",
+      "title": "Create a single-page web app that lets users upload an image (JPG/PNG/WebP) via file picker and drag-and-drop, then shows a preview and basic image information (filename, dimensions, file size).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-image-resizing-controls-that-allow-the-user-to-set-target-width-height-maintain-aspect-ratio-toggle-and-choose-a-resize-mode-fit-contain-vs-fill-cover-then-apply-the-resize-and-update-the-preview",
+      "title": "Implement image resizing controls that allow the user to set target width/height, maintain aspect ratio toggle, and choose a resize mode (fit/contain vs fill/cover), then apply the resize and update the preview.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-provide-photo-quality-enhancement-controls-implemented-client-side-no-external-ai-services-including-at-minimum-sharpen-brightness-contrast-saturation-and-a-reduce-noise-smoothing-control-applying-enhancements-must-update-the-preview-and-be-reversible-reset-to-original",
+      "title": "Provide “photo quality” enhancement controls implemented client-side (no external AI services), including at minimum: sharpen, brightness, contrast, saturation, and a “reduce noise”/smoothing control; applying enhancements must update the preview and be reversible (reset to original).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-allow-users-to-export-download-the-processed-image-with-format-options-png-and-jpeg-at-minimum-and-for-jpeg-webp-outputs-a-quality-slider-e-g-1-100",
+      "title": "Allow users to export/download the processed image with format options (PNG and JPEG at minimum) and, for JPEG/WebP outputs, a quality slider (e.g., 1–100).",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-clear-consistent-visual-theme-across-the-app-colors-typography-spacing-and-component-styling-suitable-for-a-photo-tool-avoid-blue-purple-as-the-primary-palette",
+      "title": "Add a clear, consistent visual theme across the app (colors, typography, spacing, and component styling) suitable for a photo tool; avoid blue/purple as the primary palette.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-use-generated-static-brand-assets-in-the-ui-logo-and-a-subtle-background-texture-by-placing-them-in-frontend-public-assets-generated-and-referencing-them-directly-from-the-frontend",
+      "title": "Use generated static brand assets in the UI (logo and a subtle background texture) by placing them in frontend/public/assets/generated and referencing them directly from the frontend.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Build a website that lets users resize images and enhance/improve photo quality.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Photo resize and quality enhancement website",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

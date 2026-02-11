@@ -1,0 +1,15 @@
+{
+  "frontend/src/App.tsx": "Main application component managing image upload, processing state, and layout with header, preview area, controls sidebar, and footer.",
+  "frontend/src/components/ImageDropzone.tsx": "File upload component with drag-and-drop support and file type validation for JPG, PNG, and WebP images.",
+  "frontend/src/components/ResizeControls.tsx": "Resize controls card with width/height inputs, aspect ratio lock toggle, and resize mode selector (contain/cover).",
+  "frontend/src/components/EnhancementControls.tsx": "Photo enhancement controls with sliders for brightness, contrast, saturation, sharpen, and smoothing adjustments.",
+  "frontend/src/components/ExportControls.tsx": "Export controls for downloading processed images with format selection (PNG/JPEG) and quality slider for JPEG.",
+  "frontend/src/components/ImagePreview.tsx": "Image preview component displaying the processed canvas with metadata information and loading state.",
+  "frontend/src/lib/types.ts": "TypeScript type definitions for image metadata and processing parameters.",
+  "frontend/src/lib/imageMetadata.ts": "Utility function to extract metadata (dimensions, size, type) from uploaded image files.",
+  "frontend/src/lib/imageProcessing.ts": "Client-side image processing engine with resize, brightness/contrast/saturation adjustments, sharpen, and smoothing filters using canvas API.",
+  "frontend/src/lib/exportImage.ts": "Utility function to export processed canvas as downloadable PNG or JPEG file with quality control.",
+  "frontend/src/index.css": "Global styles with warm neutral OKLCH color palette featuring amber accents for both light and dark modes.",
+  "frontend/tailwind.config.js": "Tailwind configuration with custom color tokens, Inter font family, and extended design system.",
+  "frontend/src/hooks/useQueries.ts": "Empty placeholder file as no backend queries are needed for this client-side application."
+}

@@ -1,0 +1,162 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Client-side photo resizer & quality enhancer (single-page)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Single-page image upload (picker + drag/drop) with preview and basic file info, with type validation.",
+      "acceptanceCriteria": [
+        "User can upload by clicking to choose a file or by drag-and-drop.",
+        "After upload, the app shows an image preview and displays current width×height and approximate file size.",
+        "Unsupported file types are rejected with a clear error message."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the single-page app UI shell that hosts upload, controls, preview, and export sections; wire the upload state to preview + info display."
+        },
+        {
+          "path": "frontend/src/components/ImageDropzone.tsx",
+          "operation": "create",
+          "description": "Implement file-picker + drag-and-drop uploader with validation for JPG/PNG/WebP and clear error messaging; Use shadcn-ui components (e.g., Button, Input) for consistent controls. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/lib/imageMetadata.ts",
+          "operation": "create",
+          "description": "Add helpers to read file metadata (name, byte size) and decode image to get dimensions for display alongside preview."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Resizing controls (width/height, aspect lock, contain/cover) that regenerate the processed preview on Apply.",
+      "acceptanceCriteria": [
+        "User can set width and height values; when aspect ratio lock is enabled, changing one updates the other.",
+        "Resize mode selection changes how the output is computed (contain vs cover).",
+        "Clicking an Apply/Resize action regenerates the preview at the new dimensions."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ResizeControls.tsx",
+          "operation": "create",
+          "description": "Add width/height numeric inputs, aspect-ratio lock toggle, and resize mode selector (contain vs cover) with an Apply/Resize action; Use shadcn-ui components (Input, Switch, Button, Select/ToggleGroup) to render controls. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/lib/imageProcessing.ts",
+          "operation": "create",
+          "description": "Implement client-side resize computation (contain vs cover) and canvas-based render pipeline that outputs a processed canvas/image for preview updates (no external services)."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire ResizeControls state into the processing pipeline; on Apply/Resize regenerate the preview and update displayed dimensions/file info."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Client-side quality enhancement sliders (sharpen, brightness, contrast, saturation, smoothing) with live/apply updates and reset to original.",
+      "acceptanceCriteria": [
+        "Enhancement sliders exist for sharpen, brightness, contrast, saturation, and smoothing/noise reduction.",
+        "User can apply adjustments and see the preview update accordingly.",
+        "A Reset button restores the original uploaded image (before resize/enhancement)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/EnhancementControls.tsx",
+          "operation": "create",
+          "description": "Add sliders for sharpen, brightness, contrast, saturation, and smoothing/noise reduction plus Reset action; Use shadcn-ui components (Slider, Button) for inputs and actions. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/lib/imageProcessing.ts",
+          "operation": "modify",
+          "description": "Add client-side enhancement operations: brightness/contrast/saturation adjustments and convolution-based sharpen + smoothing/noise-reduction; ensure a reversible pipeline by preserving the original decoded image separately from processed output."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire EnhancementControls into the processing pipeline; ensure Reset restores original uploaded image state and clears resize/enhancement parameters back to defaults."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Export/download processed image with PNG/JPEG options and quality slider for JPEG/WebP-like outputs.",
+      "acceptanceCriteria": [
+        "User can choose output format (PNG/JPEG).",
+        "When JPEG is selected, a quality control is shown and affects the downloaded file size/quality.",
+        "Clicking Download saves the processed image locally with a sensible filename (e.g., originalname-processed.jpg)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ExportControls.tsx",
+          "operation": "create",
+          "description": "Add output format selector (PNG/JPEG) and conditional quality slider for JPEG plus Download action; Use shadcn-ui components (Select, Slider, Button) for consistent UI. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/lib/exportImage.ts",
+          "operation": "create",
+          "description": "Implement client-side export from processed canvas/image to Blob/data URL with selected format and quality; generate a sensible output filename based on original name and chosen format."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire ExportControls to the current processed canvas/image and trigger browser download; ensure quality changes are applied to export output."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Apply a cohesive photo-tool visual theme (non-blue/purple primary) with responsive layout and consistent styling.",
+      "acceptanceCriteria": [
+        "UI uses a coherent theme (background, surfaces, typography, buttons, inputs) consistently across the page.",
+        "Primary palette is not blue/purple-dominant.",
+        "Layout looks intentional on both mobile and desktop."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Define global theme tokens (CSS variables used by Tailwind/shadcn styling) using a warm neutral base and a non-blue/purple primary accent; include consistent typography and spacing defaults."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Adjust Tailwind theme extensions only as needed to support the chosen warm/neutral palette and layout utilities while keeping the shadcn variable-based approach intact."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Implement a responsive single-page layout (header + two-column on desktop, stacked on mobile) with consistent surfaces, spacing, and typography suitable for a photo tool."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Add generated logo and subtle background texture assets under public assets and render them directly in the UI.",
+      "acceptanceCriteria": [
+        "Generated images exist under frontend/public/assets/generated and are rendered in the UI (e.g., logo in header, texture in background).",
+        "The app loads and displays these assets without involving the backend."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/logo-photo-resizer.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated logo asset file at the required path so it can be referenced directly by the frontend UI."
+        },
+        {
+          "path": "frontend/public/assets/generated/bg-texture.dim_1600x900.png",
+          "operation": "create",
+          "description": "Add the generated background texture asset file at the required path so it can be referenced directly by the frontend UI."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Render the logo from frontend/public/assets/generated/logo-photo-resizer.dim_512x512.png in the header and apply the background texture from frontend/public/assets/generated/bg-texture.dim_1600x900.png as a subtle page background (frontend-only, no backend involvement)."
+        }
+      ]
+    }
+  ]
+}

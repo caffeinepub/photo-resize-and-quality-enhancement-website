@@ -1,0 +1,123 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-single-page-web-app-that-lets-users-upload-an-image-jpg-png-webp-via-file-picker-and-drag-and-drop-then-shows-a-preview-and-basic-image-information-filename-dimensions-file-size",
+      "featureTitle": "Create a single-page web app that lets users upload an image (JPG/PNG/WebP) via file picker and drag-and-drop, then shows a preview and basic image information (filename, dimensions, file size).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/ImageDropzone.tsx",
+        "frontend/src/lib/imageMetadata.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-image-resizing-controls-that-allow-the-user-to-set-target-width-height-maintain-aspect-ratio-toggle-and-choose-a-resize-mode-fit-contain-vs-fill-cover-then-apply-the-resize-and-update-the-preview",
+      "featureTitle": "Implement image resizing controls that allow the user to set target width/height, maintain aspect ratio toggle, and choose a resize mode (fit/contain vs fill/cover), then apply the resize and update the preview.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/ResizeControls.tsx",
+        "frontend/src/lib/imageProcessing.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-provide-photo-quality-enhancement-controls-implemented-client-side-no-external-ai-services-including-at-minimum-sharpen-brightness-contrast-saturation-and-a-reduce-noise-smoothing-control-applying-enhancements-must-update-the-preview-and-be-reversible-reset-to-original",
+      "featureTitle": "Provide “photo quality” enhancement controls implemented client-side (no external AI services), including at minimum: sharpen, brightness, contrast, saturation, and a “reduce noise”/smoothing control; applying enhancements must update the preview and be reversible (reset to original).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/EnhancementControls.tsx",
+        "frontend/src/lib/imageProcessing.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-allow-users-to-export-download-the-processed-image-with-format-options-png-and-jpeg-at-minimum-and-for-jpeg-webp-outputs-a-quality-slider-e-g-1-100",
+      "featureTitle": "Allow users to export/download the processed image with format options (PNG and JPEG at minimum) and, for JPEG/WebP outputs, a quality slider (e.g., 1–100).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/ExportControls.tsx",
+        "frontend/src/lib/exportImage.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-clear-consistent-visual-theme-across-the-app-colors-typography-spacing-and-component-styling-suitable-for-a-photo-tool-avoid-blue-purple-as-the-primary-palette",
+      "featureTitle": "Add a clear, consistent visual theme across the app (colors, typography, spacing, and component styling) suitable for a photo tool; avoid blue/purple as the primary palette.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-use-generated-static-brand-assets-in-the-ui-logo-and-a-subtle-background-texture-by-placing-them-in-frontend-public-assets-generated-and-referencing-them-directly-from-the-frontend",
+      "featureTitle": "Use generated static brand assets in the UI (logo and a subtle background texture) by placing them in frontend/public/assets/generated and referencing them directly from the frontend.",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
